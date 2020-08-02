@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/backend-project/Migrations/20200801214003_AddedUserEntity.Designer.cs
+/backend-project/Migrations/20200801214003_AddedUserEntity.cs
