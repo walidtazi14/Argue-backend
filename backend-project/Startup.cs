@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using backend_project.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -32,9 +33,11 @@ namespace backend_project
         {
             services.AddDbContext<DataContext>(x => 
             x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
+            services.AddAutoMapper(typeof(ArgueRespository).Assembly);
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRespository>();
+            services.AddScoped<IArgueRepository, ArgueRespository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
